@@ -169,7 +169,7 @@
         if (maxAccuracy === rowIndex) {
           el.parentNode.classList.add('is-selected');
         }
-        el.innerText = accuracyScores[rowIndex];
+        el.innerText = accuracyScores[rowIndex].toFixed(4);
       })
     }
 

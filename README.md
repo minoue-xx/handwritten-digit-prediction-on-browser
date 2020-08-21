@@ -15,3 +15,5 @@ https://jp.mathworks.com/matlabcentral/fileexchange/69973-generate-javascript-us
 Please note that the current version produces very low accurate results.
 
 ![Step1toStep2](image/predicting7_capture.PNG)
+
+The HTML is based on https://github.com/yukagil/tfjs-mnist-cnn (Thank you!)

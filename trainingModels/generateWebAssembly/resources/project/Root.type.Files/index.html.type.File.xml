@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<Info>
+    <Category UUID="FileClassCategory">
+        <Label UUID="artifact" />
+    </Category>
+    <Category UUID="b9ce19f7-6d5c-4767-aa7a-2755bca261a4">
+        <Label UUID="6ad86676-ba9d-4de3-af9e-2b4f18c6670c" />
+    </Category>
+</Info>

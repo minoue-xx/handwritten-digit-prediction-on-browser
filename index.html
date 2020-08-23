@@ -17,7 +17,7 @@
         <canvas id="draw-area" width="280" height="280" style="border: 2px solid;"></canvas>
         <div class="field is-grouped">
           <p class="control">
-            <a id="predict-button" class="button is-link is-loading" onclick="prediction()">
+            <a id="predict-button" class="button is-link" onclick="prediction()">
               Prediction
             </a>
           </p>
@@ -33,7 +33,7 @@
           <thead>
             <tr>
               <th>Number</th>
-              <th>Accuracy</th>
+              <th>Score</th>
             </tr>
           </thead>
           <tbody>
@@ -95,15 +95,6 @@
       backgroundColor: 'black',
     });
 
-    // load pre-trained model
-    let model;
-    document.getElementById('predict-button').classList.remove('is-loading');
-    //tf.loadModel('/model/model.json')
-    //  .then(pretrainedModel => {
-    //    document.getElementById('predict-button').classList.remove('is-loading');
-    //    model = pretrainedModel;
-    //  });
-
     function getImageData() {
       const inputWidth = inputHeight = 28;
 
@@ -124,13 +115,13 @@
     function getAccuracyScores(imageData) {
 
       let inputs = [];
-      let length = 28 * 28; // 驟榊?鈴聞
+      let length = 28 * 28; // サイズ 28x28
 
-      //for (let i = 0; i < length; i++) { // 蛟､縺鯉ｼ舌°繧会ｼ代∪縺ｧ縺ｮ 
+      //for (let i = 0; i < length; i++) { // テスト用（乱数入力） 
       //  inputs.push(Math.random());
       //}
-      for (let i = 0; i < length * 4; i = i + 4) { // 蛟､縺鯉ｼ舌°繧会ｼ代∪縺ｧ縺ｮ 
-        inputs.push(imageData.data[i] / 255);
+      for (let i = 0; i < length * 4; i = i + 4) { // 画像入力
+        inputs.push(imageData.data[i]/255);
       }
       console.log(inputs); // Create Data var
 
@@ -203,12 +194,6 @@
     function _freeArray(heapBytes) {
       Module._free(heapBytes.byteOffset);
     }
-    // Example of Passing Data Arrays
-    //var Module = {
-      //onRuntimeInitialized: function () {
-
-      //}
-    //}; 
   </script>
 
 </body>

@@ -2,6 +2,7 @@
 Copyright (c) 2020 Michio Inoue
 
 This is a practice mini-project to learn HTML, JavaScript, and WebAssembly.
+日本語解説は[こちら](doc_jp/MATLAB2WebAssembly.md)
 
 MATLAB's classical neural net is implemented as a form of WebAssembly, through "Generate JavaScript Using MATLAB Coder" version 2.0.2 by Geoff McVittie. The tool allows you to create JavaScript/WebAssembly libraries from MATLAB projects using MATLAB Coder.
 

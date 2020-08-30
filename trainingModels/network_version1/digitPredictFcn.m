@@ -1,3 +1,4 @@
+% Copyright (c) 2020 Michio Inoue
 function [Y,Xf,Af] = digitPredictFcn(X,~,~)
 %DIGITPREDICTFCN neural network simulation function.
 %

@@ -1,4 +1,4 @@
-
+% Copyright (c) 2020 Michio Inoue
 %%
 [XTrain,YTrain,anglesTrain] = digitTrain4DArrayData;
 classNames = categories(YTrain);

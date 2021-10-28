@@ -85,6 +85,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/signature_pad/1.5.3/signature_pad.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@0.8.0"></script>
   <script async type="text/javascript" src="js/digitprediction.js"></script>
+  <script async type="text/javascript" src="js/digitPredictFcn.js"></script>
   <script>
     // init SignaturePad
     const drawElement = document.getElementById('draw-area');
@@ -132,8 +133,10 @@
       var Outputsbytes = _arrayToHeap(Outputs);
       // Run Function
       Module._digitprediction_initialize();
+      //Module._digitPredictFcn_initialize();
       Module._digitPredictFcn(Inputsbytes.byteOffset, Outputsbytes.byteOffset)
       Module._digitprediction_terminate();
+      //Module._digitPredictFcn_terminate();
       // Copy Data from Heap 
       Outputs = _heapToArray(Outputsbytes, Outputs);
       var outputs = Array.from(Outputs);

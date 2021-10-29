@@ -118,9 +118,9 @@
     function getAccuracyScores(imageData, flag) {
 
       let inputs = [];
-      let length = 28 * 28; // �T�C�Y 28x28
+      let length = 28 * 28; // 28x28
 
-      for (let i = 0; i < length * 4; i = i + 4) { // �摜����
+      for (let i = 0; i < length * 4; i = i + 4) {
         inputs.push(imageData.data[i]);
       }
       console.log(inputs); // Create Data var
@@ -167,7 +167,7 @@
           checkValue = algoRadio.item(i).value;
         }
       }
-      console.log('選択されているのは ' + checkValue + ' です');
+      console.log('Algo choice =' + checkValue);
 
       let flag
       if (checkValue == "FCN") {

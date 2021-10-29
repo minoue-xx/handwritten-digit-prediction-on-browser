@@ -25,7 +25,7 @@
 # 2. やったこと
 
 
-コードこちらから： [GitHub: minoue-xx/handwritten-digit-prediction-on-browser](https://github.com/minoue-xx/handwritten-digit-prediction-on-browser)
+コードこちらから： [GitHub: minoue-xx/handwritten-digit-prediction-on-browser/trainingModels/testUI](https://github.com/minoue-xx/handwritten-digit-prediction-on-browser/tree/master/trainingModels/testUI)
 
 
 

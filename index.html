@@ -16,6 +16,8 @@
       <div class="column is-narrow">
         <canvas id="draw-area" width="280" height="280" style="border: 2px solid;"></canvas>
         <div class="field is-grouped">
+          <input type="radio" name="algo" value="FCN">FCN
+          <input type="radio" name="algo" value="CNN" checked="checked">CNN
           <p class="control">
             <a id="predict-button" class="button is-link" onclick="prediction()">
               Prediction
@@ -84,8 +86,8 @@
   </div>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/signature_pad/1.5.3/signature_pad.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@0.8.0"></script>
-  <script async type="text/javascript" src="js/digitprediction.js"></script>
   <script async type="text/javascript" src="js/digitPredictFcn.js"></script>
+
   <script>
     // init SignaturePad
     const drawElement = document.getElementById('draw-area');
@@ -113,16 +115,13 @@
       return imageData;
     }
 
-    function getAccuracyScores(imageData) {
+    function getAccuracyScores(imageData, flag) {
 
       let inputs = [];
-      let length = 28 * 28; // ƒTƒCƒY 28x28
+      let length = 28 * 28; // ï¿½Tï¿½Cï¿½Y 28x28
 
-      //for (let i = 0; i < length; i++) { // ƒeƒXƒg—pi—”“ü—Íj 
-      //  inputs.push(Math.random());
-      //}
-      for (let i = 0; i < length * 4; i = i + 4) { // ‰æ‘œ“ü—Í
-        inputs.push(imageData.data[i]/255);
+      for (let i = 0; i < length * 4; i = i + 4) { // ï¿½æ‘œï¿½ï¿½ï¿½ï¿½
+        inputs.push(imageData.data[i]);
       }
       console.log(inputs); // Create Data var
 
@@ -132,11 +131,16 @@
       var Inputsbytes = _arrayToHeap(Inputs);
       var Outputsbytes = _arrayToHeap(Outputs);
       // Run Function
-      Module._digitprediction_initialize();
-      //Module._digitPredictFcn_initialize();
-      Module._digitPredictFcn(Inputsbytes.byteOffset, Outputsbytes.byteOffset)
-      Module._digitprediction_terminate();
-      //Module._digitPredictFcn_terminate();
+
+      Module._digitPredictFcn_initialize();
+      if (flag == 1) {
+        Module._digitPredictFcn_fcn(Inputsbytes.byteOffset, Outputsbytes.byteOffset)
+      } else if (flag == 2) {
+
+        Module._digitPredictFcn_CNN(Inputsbytes.byteOffset, Outputsbytes.byteOffset)
+
+      }
+      Module._digitPredictFcn_terminate();
       // Copy Data from Heap 
       Outputs = _heapToArray(Outputsbytes, Outputs);
       var outputs = Array.from(Outputs);
@@ -151,9 +155,29 @@
       return score;
     }
 
+
     function prediction() {
+
+      let checkValue = '';
+
+      let algoRadio = document.getElementsByName('algo');
+      let len = algoRadio.length;
+      for (let i = 0; i < len; i++) {
+        if (algoRadio.item(i).checked) {
+          checkValue = algoRadio.item(i).value;
+        }
+      }
+      console.log('é¸æŠžã•ã‚Œã¦ã„ã‚‹ã®ã¯ ' + checkValue + ' ã§ã™');
+
+      let flag
+      if (checkValue == "FCN") {
+        flag = 1;
+      } else if (checkValue == "CNN") {
+        flag = 2;
+      }
+
       const imageData = getImageData();
-      const accuracyScores = getAccuracyScores(imageData);
+      const accuracyScores = getAccuracyScores(imageData, flag);
       const maxAccuracy = accuracyScores.indexOf(Math.max.apply(null, accuracyScores));
 
       const elements = document.querySelectorAll(".accuracy");
